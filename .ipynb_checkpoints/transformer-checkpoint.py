@@ -1,7 +1,7 @@
 
 import torch.nn as nn 
 from torch import nn, Tensor
-import positional_encoder as pe
+import positional_encoding as pe
 import torch.nn.functional as F
 
 class TimeSeriesTransformer(nn.Module):

@@ -9,11 +9,15 @@
     'Deep Transformer Models for Time Series Forecasting: 
     The Influenza Prevalence Case'. 
     arXiv:2001.08317 [cs, stat] [Preprint]. 
-    Available at: http://arxiv.org/abs/2001.08317 (Accessed: 9 March 2022).
+    Available at: http://arxiv.org/abs/2001.08317 
 
     [2] Vaswani, A. et al. (2017) 
     'Attention Is All You Need'.
     arXiv:1706.03762 [cs] [Preprint]. 
-    Available at: http://arxiv.org/abs/1706.03762 (Accessed: 9 March 2022).
+    Available at: http://arxiv.org/abs/1706.03762 
     
+    [3] Zhang, Z., & Zohren, S. (2022) 
+    'Multi-Horizon Forecasting for Limit Order Books: Novel Deep Learning Approaches and Hardware Acceleration using Intelligent Processing Units'.
+    arXiv:2105.10430v2 [cs.LG] . 
+    https://arxiv.org/abs/2105.10430
   
