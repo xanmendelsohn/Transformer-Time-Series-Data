@@ -1,23 +1,38 @@
 # Transformer-Time-Series-Data
 
- ## Experimenting with the transformer architecture for time series data.
- This model is based on the paper by Wu et al (2020) [1] a.t.m.. In cases where the paper does not specify what value was used for a specific configuration/hyperparameter, the values from Vaswani et al (2017) [2] or its PyTorch source code is used.
+## Experimenting with the transformer architecture and other SOTA approaches for time series data.
+
+Approaches can be found in the following papers. Code is based on respective the GitHub repositories:
+
+### Autoformer:
+
+see: https://arxiv.org/pdf/2106.13008.pdf
  
- This class assumes that input layers, positional encoding layers and linear mapping layers are separate from the encoder and decoder, i.e. implemented inside the present class and not inside the Encoder() and Decoder() classes.
+Autoformer redesigns the transformer architecture into a decomposition architecture with an auto-correlation mechanism. The model incorporates a Decomposition Layer to separate seasonality, trend-cycle components, and random fluctuation. Autoformer introduces an auto-correlation mechanism that replaces the standard self-attention used in the traditional transformer.
 
-    [1] Wu, N., Green, B., Ben, X., O'banion, S. (2020). 
-    'Deep Transformer Models for Time Series Forecasting: 
-    The Influenza Prevalence Case'. 
-    arXiv:2001.08317 [cs, stat] [Preprint]. 
-    Available at: http://arxiv.org/abs/2001.08317 
+![autoformer_map](images/autoformer.png)
+ 
+### TimesNet:
 
-    [2] Vaswani, A. et al. (2017) 
-    'Attention Is All You Need'.
-    arXiv:1706.03762 [cs] [Preprint]. 
-    Available at: http://arxiv.org/abs/1706.03762 
-    
-    [3] Zhang, Z., & Zohren, S. (2022) 
-    'Multi-Horizon Forecasting for Limit Order Books: Novel Deep Learning Approaches and Hardware Acceleration using Intelligent Processing Units'.
-    arXiv:2105.10430v2 [cs.LG] . 
-    https://arxiv.org/abs/2105.10430
+see: https://arxiv.org/pdf/2210.02186.pdf
+ 
+This model addresses the phenomenon of multi-periodicity, such as daily and yearly variations for weather observations, and weekly and quarterly variations for electricity consumption, which overlap and interact. TimesNet converts 1-dimensional time series tensors into 2-dimensional tensors. We can reshape the 1D time series into a 2D tensor, where each column contains the time points within a period, and each row involves the time points at the same phase among different periods.
+
+![timesnet_map](images/timesnet.png)
+ 
+### LightTS:
+
+see: https://arxiv.org/pdf/2207.01186.pdf
+ 
+LightTS applies an MLP-based structure on top of two down-sampling strategies: 'interval sampling' and 'continuous sampling'. Down-sampling a time series often preserves the majority of its information and improves robustness. Continuous sampling involves converting a tensor of length T to T/C tensors of length C, where C represents consecutive points in the original tensor. Interval sampling involves selecting every C-th element to convert a tensor of length T to T/C tensors of length C. This method allows the model to capture both the local and global temporal patterns.
+
+![lightts_map](images/LightTS.png)
+ 
+### iTransformer:
+
+see: https://arxiv.org/pdf/2310.06625.pdf
+ 
+iTransformer applies a Transformer architecture without any modification to the basic components. iTransformer simply applies the attention and feed-forward network on the inverted input dimensions. Instead of embedding each temporal token, the time points of individual series are embedded into variate tokens which are utilized by the attention mechanism to capture multivariate correlations; meanwhile, the feed-forward network is applied for each variate token to learn nonlinear representations.
+
+![itransformer_map](images/iTransformer.png)
   
